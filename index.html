@@ -584,18 +584,23 @@
 
   <p style="font-family:'Space Mono',monospace; font-size:0.65rem; color:#333; letter-spacing:0.12em; text-transform:uppercase; margin: 1.25rem 3rem 0;">// more projects coming soon</p>
 
-  <script>
+    <script>
     // ── demo toggle ──
     function toggleDemo() {
       const btn = document.getElementById('demoToggle');
       const inner = document.getElementById('demoInner');
-      btn.classList.toggle('open');
-      inner.classList.toggle('open');
-      if (inner.classList.contains('open') && !window._demoInit) {
+      const arrow = btn.querySelector('.arrow');
+      const label = btn.querySelector('span:first-child');
+      const isOpen = inner.style.display === 'block';
+      inner.style.display = isOpen ? 'none' : 'block';
+      arrow.style.transform = isOpen ? '' : 'rotate(180deg)';
+      label.style.color = isOpen ? 'var(--muted)' : 'var(--accent)';
+      if (!isOpen && !window._demoInit) {
         window._demoInit = true;
         initDemo();
       }
     }
+
 
     // ── cache logic ──
     let csPol = 'lru', csCap = 4, csCache = [], csHits = 0, csMisses = 0;
