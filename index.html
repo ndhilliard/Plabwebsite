@@ -579,12 +579,46 @@
       </div>
       <div class="project-arrow">↗</div>
     </a>
+
+    <div class="project-card" style="display:block; cursor:default;" onclick="event.preventDefault()">
+      <div style="display:grid; grid-template-columns: 3rem 1fr auto; gap: 0 1.5rem; align-items:start; margin-bottom: 1.25rem;">
+        <div class="project-num">03</div>
+        <div class="project-body">
+          <div class="project-lang">Security Research</div>
+          <div class="project-title">Salt Typhoon — APT Analysis</div>
+          <div class="project-desc">
+            Analysis of Salt Typhoon, a Chinese state-sponsored APT that infiltrated 9+ US telecom networks and went undetected for over two years. The core argument: CALEA&#39;s government-mandated backdoors became the attack vector. Any backdoor built for law enforcement can be found by adversaries.
+          </div>
+          <div class="project-tags">
+            <span class="tag">cybersecurity</span>
+            <span class="tag">APT</span>
+            <span class="tag">threat analysis</span>
+            <span class="tag">policy</span>
+          </div>
+        </div>
+        <div class="project-arrow" style="opacity:0;">↗</div>
+      </div>
+
+      <div style="background:#080808; border:1px solid #1a1a1a; border-radius:4px; overflow:hidden; margin-top:0.5rem;">
+        <div style="position:relative;">
+          <img id="stSlide" src="slide-1.jpg" alt="Salt Typhoon slide 1" style="width:100%; display:block; border-radius:0;">
+          <button onclick="stPrev()" style="position:absolute; left:0; top:0; height:100%; width:15%; background:linear-gradient(to right, rgba(0,0,0,0.5), transparent); border:none; cursor:pointer; color:#fff; font-size:1.25rem; display:flex; align-items:center; justify-content:flex-start; padding-left:12px;">&#8249;</button>
+          <button onclick="stNext()" style="position:absolute; right:0; top:0; height:100%; width:15%; background:linear-gradient(to left, rgba(0,0,0,0.5), transparent); border:none; cursor:pointer; color:#fff; font-size:1.25rem; display:flex; align-items:center; justify-content:flex-end; padding-right:12px;">&#8250;</button>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:center; gap:1rem; padding:10px 14px; border-top:1px solid #1a1a1a; background:#0d0d0d;">
+          <button onclick="stPrev()" style="font-family:'Space Mono',monospace; font-size:10px; background:none; border:1px solid #222; color:#555; padding:4px 12px; cursor:pointer; letter-spacing:0.06em;">prev</button>
+          <span id="stCounter" style="font-family:'Space Mono',monospace; font-size:10px; color:#444; letter-spacing:0.1em;">1 / 7</span>
+          <button onclick="stNext()" style="font-family:'Space Mono',monospace; font-size:10px; background:none; border:1px solid #222; color:#555; padding:4px 12px; cursor:pointer; letter-spacing:0.06em;">next</button>
+        </div>
+      </div>
+    </div>
+
   </div>
 
 
   <p style="font-family:'Space Mono',monospace; font-size:0.65rem; color:#333; letter-spacing:0.12em; text-transform:uppercase; margin: 1.25rem 3rem 0;">// more projects coming soon</p>
 
-    <script>
+  <script>
     // ── demo toggle ──
     function toggleDemo() {
       const btn = document.getElementById('demoToggle');
@@ -600,7 +634,6 @@
         initDemo();
       }
     }
-
 
     // ── cache logic ──
     let csPol = 'lru', csCap = 4, csCache = [], csHits = 0, csMisses = 0;
@@ -759,5 +792,18 @@
     <a href="https://github.com/ndhilliard" target="_blank" rel="noopener">github.com/ndhilliard</a>
   </footer>
 
+
+  <script>
+    var stCurrent = 1;
+    var stTotal = 7;
+    function stShow(n) {
+      stCurrent = Math.max(1, Math.min(stTotal, n));
+      document.getElementById('stSlide').src = 'slide-' + stCurrent + '.jpg';
+      document.getElementById('stSlide').alt = 'Salt Typhoon slide ' + stCurrent;
+      document.getElementById('stCounter').textContent = stCurrent + ' / ' + stTotal;
+    }
+    function stNext() { stShow(stCurrent + 1); }
+    function stPrev() { stShow(stCurrent - 1); }
+  </script>
 </body>
 </html>
