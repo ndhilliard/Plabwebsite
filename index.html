@@ -599,9 +599,13 @@
         <div class="project-arrow" style="opacity:0;">↗</div>
       </div>
 
-      <div style="background:#080808; border:1px solid #1a1a1a; border-radius:4px; overflow:hidden; margin-top:0.5rem;">
+      <button id="stToggle" onclick="toggleSlideshow()" style="width:100%; background:none; border:1px solid #1a1a1a; border-radius:4px; padding:0.75rem 1rem; display:flex; justify-content:space-between; align-items:center; cursor:pointer; margin-top:0.5rem; transition: background 0.2s;" onmouseover="this.style.background='#111'" onmouseout="this.style.background='none'">
+        <span style="font-family:'Space Mono',monospace; font-size:0.7rem; color:var(--muted); letter-spacing:0.1em;">// view slides</span>
+        <span id="stArrow" style="font-size:0.7rem; color:var(--faint); transition: transform 0.25s;">&#9660;</span>
+      </button>
+      <div id="stInner" style="display:none; margin-top:4px; background:#080808; border:1px solid #1a1a1a; border-radius:4px; overflow:hidden;">
         <div style="position:relative;">
-          <img id="stSlide" src="slide-1.jpg" alt="Salt Typhoon slide 1" style="width:100%; display:block; border-radius:0;">
+          <img id="stSlide" src="slides/slide-1.jpg" alt="Salt Typhoon slide 1" style="width:100%; display:block; border-radius:0;">
           <button onclick="stPrev()" style="position:absolute; left:0; top:0; height:100%; width:15%; background:linear-gradient(to right, rgba(0,0,0,0.5), transparent); border:none; cursor:pointer; color:#fff; font-size:1.25rem; display:flex; align-items:center; justify-content:flex-start; padding-left:12px;">&#8249;</button>
           <button onclick="stNext()" style="position:absolute; right:0; top:0; height:100%; width:15%; background:linear-gradient(to left, rgba(0,0,0,0.5), transparent); border:none; cursor:pointer; color:#fff; font-size:1.25rem; display:flex; align-items:center; justify-content:flex-end; padding-right:12px;">&#8250;</button>
         </div>
@@ -804,6 +808,15 @@
     }
     function stNext() { stShow(stCurrent + 1); }
     function stPrev() { stShow(stCurrent - 1); }
+    function toggleSlideshow() {
+      var inner = document.getElementById('stInner');
+      var arrow = document.getElementById('stArrow');
+      var label = document.getElementById('stToggle').querySelector('span:first-child');
+      var isOpen = inner.style.display === 'block';
+      inner.style.display = isOpen ? 'none' : 'block';
+      arrow.style.transform = isOpen ? '' : 'rotate(180deg)';
+      label.style.color = isOpen ? 'var(--muted)' : 'var(--accent)';
+    }
   </script>
 </body>
 </html>
