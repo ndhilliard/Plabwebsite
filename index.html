@@ -286,6 +286,179 @@
 
     footer a:hover { color: var(--accent); }
 
+    /* ── DEMO ── */
+    .demo-wrap {
+      margin: 0 3rem;
+      border: 1px solid var(--border);
+      border-top: none;
+    }
+
+    .demo-toggle {
+      width: 100%;
+      background: none;
+      border: none;
+      border-top: 1px solid var(--border);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .demo-toggle:hover { background: var(--surface); }
+
+    .demo-toggle span {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+
+    .demo-toggle .arrow {
+      font-size: 0.7rem;
+      color: var(--faint);
+      transition: transform 0.25s;
+    }
+
+    .demo-toggle.open .arrow { transform: rotate(180deg); }
+    .demo-toggle.open span { color: var(--accent); }
+
+    .demo-inner {
+      display: none;
+      padding: 1.5rem 2rem 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .demo-inner.open { display: block; }
+
+    .demo-note {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--faint);
+      letter-spacing: 0.08em;
+      margin-bottom: 1.25rem;
+    }
+
+    .cs-term {
+      background: #080808;
+      border: 1px solid #1a1a1a;
+      border-radius: 4px;
+      overflow: hidden;
+      font-family: 'Space Mono', monospace;
+    }
+
+    .cs-bar {
+      background: #141414;
+      border-bottom: 1px solid #1a1a1a;
+      padding: 7px 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .cs-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .cd1 { background: #2e1515; } .cd2 { background: #2e2815; } .cd3 { background: #152e1e; }
+    .cs-bar-title { font-size: 10px; color: #333; letter-spacing: 0.1em; margin-left: 6px; }
+
+    .cs-out {
+      padding: 12px 14px;
+      min-height: 220px;
+      max-height: 340px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #222 transparent;
+    }
+
+    .cs-ln { font-size: 11.5px; line-height: 1.85; white-space: pre; color: #c8c4bc; }
+    .cs-ln.g { color: #6dffb3; }
+    .cs-ln.r { color: #ff6d6d; }
+    .cs-ln.y { color: #ffd26d; }
+    .cs-ln.b { color: #6db8ff; }
+    .cs-ln.d { color: #2a2a2a; }
+    .cs-ln.m { color: #444; }
+
+    .cs-controls {
+      border-top: 1px solid #1a1a1a;
+      padding: 9px 14px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .cs-pol { display: flex; gap: 6px; }
+
+    .cs-pbtn {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      background: none;
+      border: 1px solid #222;
+      color: #444;
+      padding: 4px 10px;
+      cursor: pointer;
+      letter-spacing: 0.06em;
+      transition: all 0.15s;
+    }
+
+    .cs-pbtn.active { border-color: var(--accent); color: var(--accent); }
+    .cs-pbtn:hover:not(.active) { border-color: #333; color: #777; }
+
+    .cs-size { display: flex; align-items: center; gap: 8px; }
+    .cs-size label { font-family: 'Space Mono', monospace; font-size: 10px; color: #333; letter-spacing: 0.06em; }
+    .cs-size input[type=range] { accent-color: var(--accent); width: 80px; }
+    .cs-size-val { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--accent); min-width: 14px; }
+
+    .cs-actions { display: flex; gap: 6px; margin-left: auto; }
+
+    .cs-abtn {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      background: none;
+      border: 1px solid #222;
+      color: #555;
+      padding: 4px 10px;
+      cursor: pointer;
+      letter-spacing: 0.06em;
+      transition: all 0.15s;
+    }
+
+    .cs-abtn:hover { border-color: #444; color: #aaa; }
+
+    .cs-input-row {
+      border-top: 1px solid #1a1a1a;
+      display: flex;
+      align-items: center;
+      padding: 8px 14px;
+    }
+
+    .cs-prompt { font-family: 'Space Mono', monospace; font-size: 11px; color: var(--accent); }
+
+    .cs-input {
+      background: none;
+      border: none;
+      outline: none;
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: var(--text);
+      flex: 1;
+      margin-left: 8px;
+      caret-color: var(--accent);
+    }
+
+    .cs-stats {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .cs-stat-item { display: flex; flex-direction: column; gap: 2px; }
+    .cs-stat-lbl { font-family: 'Space Mono', monospace; font-size: 9px; color: var(--faint); letter-spacing: 0.1em; }
+    .cs-stat-val { font-family: 'Space Mono', monospace; font-size: 16px; color: var(--text); }
+    .cs-stat-val.g { color: #6dffb3; }
+    .cs-stat-val.r { color: #ff6d6d; }
+    .cs-stat-val.y { color: #ffd26d; }
+
     /* ── MOBILE ── */
     @media (max-width: 640px) {
       nav { padding: 1.25rem 1.5rem; }
@@ -320,7 +493,7 @@
 
   <div class="hero">
     <div class="hero-tag">// CS student &middot; NYC</div>
-    <h1>Systems, security, and everything in between.</em></h1>
+    <h1>Systems, security,<br>and <em>everything</em> in between.</h1>
     <p>Junior CS student interested in systems programming, computer architecture, and security. Here's what I've been working on.</p>
   </div>
 
@@ -346,16 +519,233 @@
       </div>
       <div class="project-arrow">↗</div>
     </a>
+
+    <div class="demo-wrap" style="border:none; margin:0;">
+      <button class="demo-toggle" id="demoToggle" onclick="toggleDemo()" style="border-top: 1px solid var(--border); border-left:none; border-right:none; border-bottom:none; width:100%; padding: 1rem 2rem; display:flex; justify-content:space-between; background:none; cursor:pointer; transition: background 0.2s;" onmouseover="this.style.background='var(--surface)'" onmouseout="this.style.background='none'">
+        <span style="font-family:'Space Mono',monospace; font-size:0.7rem; color:var(--muted); letter-spacing:0.1em;">// try the interactive demo</span>
+        <span class="arrow" style="font-size:0.7rem; color:var(--faint); transition: transform 0.25s;">&#9660;</span>
+      </button>
+      <div class="demo-inner" id="demoInner" style="display:none; padding:1.5rem 2rem 2rem; border-top: 1px solid var(--border);">
+        <div class="demo-note">// interactive demo &mdash; original implementation in C++</div>
+        <div class="cs-term">
+          <div class="cs-bar">
+            <div class="cs-dot cd1"></div><div class="cs-dot cd2"></div><div class="cs-dot cd3"></div>
+            <span class="cs-bar-title">cache_sim &mdash; ndhilliard</span>
+          </div>
+          <div class="cs-out" id="csOut"></div>
+          <div class="cs-controls">
+            <div class="cs-pol">
+              <button class="cs-pbtn active" id="btnLru" onclick="setPolicy('lru')">LRU</button>
+              <button class="cs-pbtn" id="btnFifo" onclick="setPolicy('fifo')">FIFO</button>
+            </div>
+            <div class="cs-size">
+              <label>SIZE</label>
+              <input type="range" min="2" max="8" value="4" id="csSize" oninput="onSizeChange()">
+              <span class="cs-size-val" id="csSizeVal">4</span>
+            </div>
+            <div class="cs-actions">
+              <button class="cs-abtn" onclick="randomOp()">random</button>
+              <button class="cs-abtn" onclick="resetDemo()">reset</button>
+            </div>
+          </div>
+          <div class="cs-input-row">
+            <span class="cs-prompt">$</span>
+            <input class="cs-input" id="csCmd" placeholder="access &lt;key&gt; [value]  |  random  |  help" autocomplete="off" spellcheck="false">
+          </div>
+        </div>
+        <div class="cs-stats">
+          <div class="cs-stat-item"><div class="cs-stat-lbl">HITS</div><div class="cs-stat-val g" id="csHits">0</div></div>
+          <div class="cs-stat-item"><div class="cs-stat-lbl">MISSES</div><div class="cs-stat-val r" id="csMisses">0</div></div>
+          <div class="cs-stat-item"><div class="cs-stat-lbl">HIT RATE</div><div class="cs-stat-val y" id="csRate">&mdash;</div></div>
+        </div>
+      </div>
+    </div>
+
+    <a class="project-card" href="https://github.com/ndhilliard/imdb-mobile-app" target="_blank" rel="noopener">
+      <div class="project-num">02</div>
+      <div class="project-body">
+        <div class="project-lang">React Native &middot; SQLite</div>
+        <div class="project-title">IMDB Movie Database App</div>
+        <div class="project-desc">
+          Mobile app built with a classmate for our Web and Mobile Development course. Lets you search a real IMDB dataset by title, rating, or director — loaded locally via SQLite. I handled the screen layouts and stack navigation; my partner wrote the SQL query logic. Getting the SQLite database to copy correctly into device storage on first launch and running through Expo Go without an app store was its own challenge.
+        </div>
+        <div class="project-tags">
+          <span class="tag">React Native</span>
+          <span class="tag">SQLite</span>
+          <span class="tag">Expo</span>
+          <span class="tag">mobile</span>
+          <span class="tag">collab</span>
+        </div>
+      </div>
+      <div class="project-arrow">↗</div>
+    </a>
   </div>
 
+
   <p style="font-family:'Space Mono',monospace; font-size:0.65rem; color:#333; letter-spacing:0.12em; text-transform:uppercase; margin: 1.25rem 3rem 0;">// more projects coming soon</p>
+
+  <script>
+    // ── demo toggle ──
+    function toggleDemo() {
+      const btn = document.getElementById('demoToggle');
+      const inner = document.getElementById('demoInner');
+      btn.classList.toggle('open');
+      inner.classList.toggle('open');
+      if (inner.classList.contains('open') && !window._demoInit) {
+        window._demoInit = true;
+        initDemo();
+      }
+    }
+
+    // ── cache logic ──
+    let csPol = 'lru', csCap = 4, csCache = [], csHits = 0, csMisses = 0;
+
+    function csOut() { return document.getElementById('csOut'); }
+
+    function csLine(text, cls) {
+      const d = document.createElement('div');
+      d.className = 'cs-ln' + (cls ? ' ' + cls : '');
+      d.innerHTML = text;
+      csOut().appendChild(d);
+      csOut().scrollTop = csOut().scrollHeight;
+    }
+
+    function csBlank() { csLine('', 'd'); }
+
+    function renderCache(highlights) {
+      const cap = csCap;
+      highlights = highlights || {};
+      csLine('Cache state:', 'm');
+      for (let i = 0; i < cap; i++) {
+        const e = csCache[i];
+        const h = e && highlights[e.key];
+        const cls = h === 'hit' ? 'g' : h === 'evict' ? 'r' : h === 'new' ? 'b' : e ? '' : 'm';
+        const label = h === 'hit' ? ' &larr; HIT' : h === 'evict' ? ' &larr; EVICTED' : h === 'new' ? ' &larr; NEW' : '';
+        const content = e ? `  [${String(i).padStart(2,'0')}]  ${e.key.padEnd(8)} ${e.val.padEnd(12)}${label}` : `  [${String(i).padStart(2,'0')}]  &mdash;`;
+        csLine(content, cls);
+      }
+      const total = csHits + csMisses;
+      document.getElementById('csHits').textContent = csHits;
+      document.getElementById('csMisses').textContent = csMisses;
+      document.getElementById('csRate').textContent = total ? Math.round(csHits/total*100) + '%' : '&mdash;';
+      csLine('&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;', 'd');
+    }
+
+    function csAccess(key, val) {
+      key = key.toUpperCase().slice(0,6);
+      val = (val || key.toLowerCase()).slice(0,10);
+      const idx = csCache.findIndex(e => e.key === key);
+      const highlights = {};
+
+      csLine('$ access ' + key + ' ' + val, 'm');
+
+      if (idx !== -1) {
+        csHits++;
+        csLine('[HIT]  "' + key + '" found &rarr; ' + csCache[idx].val, 'g');
+        if (csPol === 'lru') {
+          const entry = csCache.splice(idx, 1)[0];
+          csCache.unshift(entry);
+          csLine('       moved to MRU position', 'm');
+        }
+        highlights[key] = 'hit';
+      } else {
+        csMisses++;
+        let evicted = null;
+        if (csCache.length >= csCap) {
+          const ei = csPol === 'lru' ? csCache.length - 1 : 0;
+          evicted = csCache.splice(ei, 1)[0];
+          highlights[evicted.key] = 'evict';
+          csLine('[MISS] "' + key + '" not found', 'r');
+          csLine('[EVICT] "' + evicted.key + '" removed (' + (csPol === 'lru' ? 'least recently used' : 'first in') + ')', 'y');
+        } else {
+          csLine('[MISS] "' + key + '" not found', 'r');
+        }
+        const entry = { key, val };
+        if (csPol === 'lru') csCache.unshift(entry); else csCache.push(entry);
+        highlights[key] = 'new';
+        csLine('[INSERT] "' + key + '" added', 'b');
+      }
+      csBlank();
+      renderCache(highlights);
+      csBlank();
+    }
+
+    const sampleKeys = ['A','B','C','D','E','F','G','H','X','Y'];
+
+    function randomOp() {
+      const k = sampleKeys[Math.floor(Math.random() * sampleKeys.length)];
+      csAccess(k, k.toLowerCase() + Math.floor(Math.random()*99));
+    }
+
+    function setPolicy(p) {
+      csPol = p;
+      document.getElementById('btnLru').classList.toggle('active', p === 'lru');
+      document.getElementById('btnFifo').classList.toggle('active', p === 'fifo');
+      csCache = []; csHits = 0; csMisses = 0;
+      csLine('// policy switched to ' + p.toUpperCase() + ' &mdash; cache cleared', 'm');
+      csBlank();
+    }
+
+    function onSizeChange() {
+      csCap = parseInt(document.getElementById('csSize').value);
+      document.getElementById('csSizeVal').textContent = csCap;
+      csCache = []; csHits = 0; csMisses = 0;
+      csLine('// cache size set to ' + csCap + ' &mdash; cache cleared', 'm');
+      csBlank();
+    }
+
+    function resetDemo() {
+      csCache = []; csHits = 0; csMisses = 0;
+      document.getElementById('csOut').innerHTML = '';
+      document.getElementById('csHits').textContent = '0';
+      document.getElementById('csMisses').textContent = '0';
+      document.getElementById('csRate').innerHTML = '&mdash;';
+      initDemo();
+    }
+
+    function handleCmd(raw) {
+      const parts = raw.trim().split(/\s+/);
+      const cmd = parts[0].toLowerCase();
+      if (cmd === 'help') {
+        csLine('  access &lt;key&gt; [value]  &mdash; read/write a cache entry', 'm');
+        csLine('  random                &mdash; run a random access', 'm');
+        csLine('  clear / reset         &mdash; reset the cache', 'm');
+        csBlank();
+      } else if (cmd === 'random') {
+        randomOp();
+      } else if (cmd === 'access' && parts[1]) {
+        csAccess(parts[1], parts[2] || null);
+      } else if (cmd === 'clear' || cmd === 'reset') {
+        resetDemo();
+      } else {
+        csLine('unknown command. type "help" for usage.', 'r');
+        csBlank();
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('csCmd').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+          const val = e.target.value.trim();
+          if (val) { handleCmd(val); e.target.value = ''; }
+        }
+      });
+    });
+
+    function initDemo() {
+      csLine('Cache Replacement Simulator', 'g');
+      csLine('// C++ implementation by ndhilliard', 'm');
+      csLine('// select a policy, adjust size, then type: access &lt;key&gt; [value]', 'm');
+      csBlank();
+    }
+  </script>
 
   <div class="section-label" id="about">
     <span>About</span>
   </div>
 
   <div class="about">
-    <p>CS junior based in NYC. Currently looking for internships to gain real world expierence and fufill credit requirments for my degree. Courses include architecture, memory systems, and networking coded in C+, also into cybersecurity. This site is a work in progress as I add more projects.</p>
+    <p>CS junior based in NYC, originally from Texas. I like working close to the hardware — architecture, memory systems, and networking. Also into cybersecurity. This site is a work in progress as I add more projects.</p>
     <a href="https://github.com/ndhilliard" target="_blank" rel="noopener">view github →</a>
   </div>
 
