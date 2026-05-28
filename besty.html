@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Besty AI — Nathan Hilliard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f9f8f6;
+      --white: #ffffff;
+      --text: #1a1a1a;
+      --muted: #6b7280;
+      --light: #f3f4f6;
+      --border: #e5e7eb;
+      --accent: #2563eb;
+      --accent-light: #eff6ff;
+      --green: #16a34a;
+      --green-light: #f0fdf4;
+      --orange: #ea580c;
+      --orange-light: #fff7ed;
+      --radius: 16px;
+      --radius-sm: 10px;
+      --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.06);
+      --shadow-lg: 0 8px 32px rgba(0,0,0,0.10);
+      --font: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 40px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-badge {
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    /* HERO */
+    .hero {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 100px 40px 80px;
+      text-align: center;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 500;
+      margin-bottom: 32px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-tag .dot {
+      width: 7px;
+      height: 7px;
+      background: var(--green);
+      border-radius: 50%;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 5vw, 60px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+      color: var(--text);
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+      font-weight: 400;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--text);
+      color: white;
+      padding: 14px 28px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .hero-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    }
+
+    /* CONTAINER */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* SECTION */
+    .section {
+      padding: 80px 0;
+    }
+
+    .section-eyebrow {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(26px, 3vw, 36px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .section-body {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.75;
+      max-width: 600px;
+      margin-bottom: 48px;
+    }
+
+    /* PROBLEM CARDS */
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .problem-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .problem-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .problem-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--orange-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+
+    .problem-card h3 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .problem-card p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* AI / HUMAN SPLIT */
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 8px;
+    }
+
+    .split-panel {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .split-header {
+      padding: 20px 24px 16px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .split-header .badge {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      letter-spacing: 0.04em;
+    }
+
+    .badge-ai { background: var(--accent-light); color: var(--accent); }
+    .badge-human { background: var(--green-light); color: var(--green); }
+
+    .split-header h3 { font-size: 15px; font-weight: 600; }
+
+    .split-list {
+      padding: 16px 24px;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .split-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .split-list li::before {
+      content: '→';
+      color: var(--border);
+      font-size: 12px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .split-panel.ai .split-list li::before { color: var(--accent); }
+    .split-panel.human .split-list li::before { color: var(--green); }
+
+    /* LOOP */
+    .loop-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .loop-item {
+      padding: 28px 24px;
+      border-right: 1px solid var(--border);
+      position: relative;
+    }
+
+    .loop-item:last-child { border-right: none; }
+
+    .loop-step {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .loop-item h3 {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .loop-item p {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .loop-arrow {
+      position: absolute;
+      right: -10px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 10px;
+      z-index: 2;
+    }
+
+    /* ABOUT */
+    .about-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 48px;
+      box-shadow: var(--shadow);
+    }
+
+    .about-intro {
+      font-size: 18px;
+      line-height: 1.75;
+      color: var(--text);
+      margin-bottom: 20px;
+      font-weight: 400;
+    }
+
+    .about-intro strong { font-weight: 600; }
+
+    .about-body {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 40px;
+    }
+
+    .stats-row {
+      display: flex;
+      gap: 0;
+      border-top: 1px solid var(--border);
+      padding-top: 32px;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .stat-item .val {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      display: block;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .stat-item .key {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    /* CLOSING */
+    .closing {
+      background: linear-gradient(135deg, #1e3a8a, #4338ca);
+      border-radius: var(--radius);
+      padding: 60px 48px;
+      text-align: center;
+      color: white;
+      margin: 0 0 80px;
+    }
+
+    .closing h2 {
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .closing p {
+      color: rgba(255,255,255,0.7);
+      font-size: 16px;
+      max-width: 480px;
+      margin: 0 auto 32px;
+      line-height: 1.7;
+    }
+
+    .closing a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: white;
+      color: #1e3a8a;
+      padding: 14px 28px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.2s;
+    }
+
+    .closing a:hover { transform: translateY(-2px); }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--white);
+    }
+
+    footer span { font-size: 13px; color: var(--muted); }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+
+    footer a:hover { color: var(--text); }
+
+    footer .footer-links { display: flex; gap: 24px; }
+
+    /* DIVIDER */
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+    }
+
+    /* FADE IN */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 700px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hero, .container { padding-left: 20px; padding-right: 20px; }
+      .problem-grid { grid-template-columns: 1fr; }
+      .split { grid-template-columns: 1fr; }
+      .loop-grid { grid-template-columns: 1fr 1fr; }
+      .about-card { padding: 28px 24px; }
+      .closing { padding: 40px 24px; }
+      footer { padding: 24px 20px; flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="https://melanate.tech" class="nav-logo">
+      Nathan Hilliard
+      <span class="nav-badge"></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#problem">The Problem</a></li>
+      <li><a href="#ai-wins">AI Wins</a></li>
+      <li><a href="#loop">The Loop</a></li>
+      <li><a href="#handoff">Handoff</a></li>
+      <li><a href="#about">About Me</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero fade-up">
+    <div class="hero-tag">
+      <span class="dot"></span>
+    </div>
+    <h1>AI handles the speed.<br>Humans handle the moments<br>that <span>truly matter.</span></h1>
+    <p>A hospitality operator's take on what great short-term rental management actually looks like — and where AI changes everything.</p>
+    <a href="#problem" class="hero-cta">See the full picture ↓</a>
+  </div>
+
+  <!-- PROBLEM -->
+  <div class="container">
+    <hr class="section-divider" />
+    <div class="section fade-up" id="problem">
+      <div class="section-eyebrow">The Problem</div>
+      <h2 class="section-title">Traditional property management has a misalignment problem.</h2>
+      <p class="section-body">The manager is incentivized to minimize spend. The guest expects a seamless experience. The owner wants revenue. These three interests rarely align naturally — and the guest pays the price every time. I've worked in high-volume NYC hospitality for years. I know exactly what that friction looks like from the inside.</p>
+      <div class="problem-grid">
+        <div class="problem-card">
+          <div class="problem-icon">⏱</div>
+          <h3>Slow responses</h3>
+          <p>A guest waiting hours to hear back on a broken heater isn't a minor inconvenience. It's a one-star review forming in real time.</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">⚖️</div>
+          <h3>Misaligned incentives</h3>
+          <p>The property manager who delays a repair isn't lazy — they're optimizing for their own cost structure. The system creates the problem.</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">💰</div>
+          <h3>Missed revenue moments</h3>
+          <p>Early check-in, late checkout, gap nights — these opportunities disappear when no one is watching the calendar at 11pm.</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">🎲</div>
+          <h3>Inconsistent experience</h3>
+          <p>Whether a guest has a great stay often depends on which manager is on that day. That variability kills repeat bookings.</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="section-divider" />
+
+    <!-- AI WINS -->
+    <div class="section fade-up" id="ai-wins">
+      <div class="section-eyebrow">Where AI Wins</div>
+      <h2 class="section-title">Speed, consistency, and objectivity — at scale.</h2>
+      <p class="section-body">An AI doesn't have an incentive to delay. It doesn't have a bad day. It doesn't forget to follow up. For the routine 80% of property management, that's not just good enough — it's better than a human. But knowing which 80% that is requires someone who's actually worked the job.</p>
+      <div class="split">
+        <div class="split-panel ai">
+          <div class="split-header">
+            <span class="badge badge-ai">AI owns</span>
+            <h3>Fast, consistent, always on</h3>
+          </div>
+          <ul class="split-list">
+            <li>Instant guest messaging and FAQs</li>
+            <li>Check-in and check-out instructions</li>
+            <li>Early check-in upsell offers</li>
+            <li>Late checkout upsell offers</li>
+            <li>Gap night pricing and booking</li>
+            <li>Maintenance request triage</li>
+            <li>Review request follow-up</li>
+            <li>Booking confirmations and reminders</li>
+          </ul>
+        </div>
+        <div class="split-panel human">
+          <div class="split-header">
+            <span class="badge badge-human">Human owns</span>
+            <h3>When someone needs to feel heard</h3>
+          </div>
+          <ul class="split-list">
+            <li>Guest locked out, can't access property</li>
+            <li>Payment declined or disputed</li>
+            <li>Complaint requiring de-escalation</li>
+            <li>Oversight that created a bad experience</li>
+            <li>Anything emotionally charged</li>
+            <li>Situations where judgment matters</li>
+            <li>Moments that need a real conversation</li>
+            <li>Turning a bad stay into a good one</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <hr class="section-divider" />
+
+    <!-- LOOP -->
+    <div class="section fade-up" id="loop">
+      <div class="section-eyebrow">The Reinvestment Loop</div>
+      <h2 class="section-title">Cost savings from automation fund the upgrades that drive revenue.</h2>
+      <p class="section-body">This is the part most people miss. The financial argument for AI property management isn't just efficiency — it's compounding. The money saved on management overhead becomes available to reinvest directly into the property. Better property means better reviews. Better reviews mean higher rates.</p>
+      <div class="loop-grid">
+        <div class="loop-item">
+          <div class="loop-step">01</div>
+          <h3>AI handles the routine</h3>
+          <p>Messaging, upsells, triage — all automated. No overhead.</p>
+          <div class="loop-arrow">→</div>
+        </div>
+        <div class="loop-item">
+          <div class="loop-step">02</div>
+          <h3>Operational costs drop</h3>
+          <p>Fewer staff hours. Faster resolutions. Lower cost per property.</p>
+          <div class="loop-arrow">→</div>
+        </div>
+        <div class="loop-item">
+          <div class="loop-step">03</div>
+          <h3>Savings fund upgrades</h3>
+          <p>Better linens, faster wifi, smarter locks. The nice-to-haves get funded.</p>
+          <div class="loop-arrow">→</div>
+        </div>
+        <div class="loop-item">
+          <div class="loop-step">04</div>
+          <h3>Reviews and rates improve</h3>
+          <p>5-star experiences drive higher nightly rates. The loop compounds.</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="section-divider" />
+
+    <!-- ABOUT -->
+    <div class="section fade-up" id="about">
+      <div class="section-eyebrow">About Me</div>
+      <h2 class="section-title">I sit at the exact intersection this role requires.</h2>
+      <p class="section-body">Most candidates come from one side or the other. Either they understand the tech and have never worked a hospitality shift, or they know the industry and have no CS foundation. I have both — and that combination is rare.</p>
+      <div class="about-card">
+        <p class="about-intro">I'm a CS junior at CUNY with a <strong>3.518 GPA</strong>, building projects in systems programming, security, and backend development. I'm also someone who has managed a <strong>35-person front-of-house team</strong>, turned bad guest experiences into good ones hundreds of times, and understands what hospitality actually feels like from inside a busy service environment.</p>
+        <p class="about-body">The guest communication problem Besty is solving isn't abstract to me. I've been the human on the other end of it. I know what guests actually need, when they need it, and what it feels like when the system fails them. Putting AI in front of that process — and knowing exactly where the handoff to a human has to happen — is something I can do with real instinct, not just theory. Sometimes you just need to talk it through. And knowing when that moment arrives is everything.</p>
+        <div class="stats-row">
+          <div class="stat-item">
+            <span class="val">3.518</span>
+            <span class="key">GPA at CUNY</span>
+          </div>
+          <div class="stat-item">
+            <span class="val">05/27</span>
+            <span class="key">Expected graduation</span>
+          </div>
+          <div class="stat-item">
+            <span class="val">35+</span>
+            <span class="key">FOH staff managed</span>
+          </div>
+          <div class="stat-item">
+            <span class="val">NYC</span>
+            <span class="key">Based, available</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CLOSING CTA -->
+  <div class="container">
+    <div class="closing fade-up">
+      <h2>Ready to transform guest experience together?</h2>
+      <p>I bring the hospitality instincts. Besty brings the AI. Let's talk about what that looks like in practice.</p>
+      <a href="https://melanate.tech">View full portfolio →</a>
+    </div>
+  </div>
+
+  <footer>
+    <span></span>
+    <div class="footer-links">
+      <a href="https://melanate.tech">melanate.tech</a>
+      <a href="https://github.com/ndhilliard">github</a>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(el => {
+        if (el.isIntersecting) el.target.classList.add('visible');
+      });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
